@@ -64,10 +64,13 @@ def generate_ngram(text, n=2, n_gram=False):
 
 
 def pos_weightage(text, n, dp):
-    """Provide a weightage on a scale of 1-4 for each POS as follows:
-        Noun : 4
-        Verb : 3
-        Adj : 2
+    """Provide a weightage for each POS as follows:
+        Noun : 30
+        Pronoun : 30
+        Verb : 20
+        Adj : 15
+        Adverb : 15
+        Preposition : 5
         Article : 1
        Thus generating a weighted uni-gram """
     text = text.lower()
@@ -97,13 +100,13 @@ def pos_weightage(text, n, dp):
     return wt_ngram, pos_word
 
 
-def g_penalty_func(list_size, n=4):
-    if list_size == n:
-        return 1
-    l = list_size / n
-    g_pen = 1 - math.exp(-3 * l)
-    # print(g_pen)
-    return g_pen
+# def g_penalty_func(list_size, n=4):
+#     if list_size == n:
+#         return 1
+#     l = list_size / n
+#     g_pen = 1 - math.exp(-3 * l)
+#     # print(g_pen)
+#     return g_pen
 
 
 def calculation(a, ap, b, bp, n, dp):
@@ -199,10 +202,9 @@ def calculation(a, ap, b, bp, n, dp):
     # print(dp)
     return (sum(a.values())) / r if r != 0 else 0
 
-def s_score(reference, generated):
+def RTN_score(reference, generated):
     """
-    Modified Bleu score function is given the reference, or original text, and generated/machine-translated texts.
-    Uses both precision and recall
+    RTN score function is given the reference, or original text, and generated/machine-translated texts.
     """
     gen_length = len(generated.split())
     ref_length = len(reference.split())
@@ -304,36 +306,36 @@ sent17 = "I go to an institution for learning"
 sent18 = "He comes from cinema"
 # reference2 = input("Type reference translation: ").translate(str.maketrans('', '', string.punctuation))
 # candidate = input("Type candidate translation: ").translate(str.maketrans('', '', string.punctuation))
-print(f"S-score: {sent2, s_score(reference, sent2)}")
+print(f"S-score: {sent2, RTN_score(reference, sent2)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent3, s_score(reference, sent3)}")
+print(f"S-score: {sent3, RTN_score(reference, sent3)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent4, s_score(reference, sent4)}")
+print(f"S-score: {sent4, RTN_score(reference, sent4)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent5 ,s_score(reference, sent5)}")
+print(f"S-score: {sent5 ,RTN_score(reference, sent5)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent6, s_score(reference, sent6)}")
+print(f"S-score: {sent6, RTN_score(reference, sent6)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent7, s_score(reference, sent7)}")
+print(f"S-score: {sent7, RTN_score(reference, sent7)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent13, s_score(reference, sent13)}")
+print(f"S-score: {sent13, RTN_score(reference, sent13)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent8, s_score(reference, sent8)}")
+print(f"S-score: {sent8, RTN_score(reference, sent8)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent9, s_score(reference, sent9)}")
+print(f"S-score: {sent9, RTN_score(reference, sent9)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent14, s_score(reference, sent14)}")
+print(f"S-score: {sent14, RTN_score(reference, sent14)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent15,s_score(reference, sent15)}")
+print(f"S-score: {sent15,RTN_score(reference, sent15)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent10, s_score(reference, sent10)}")
+print(f"S-score: {sent10, RTN_score(reference, sent10)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent11, s_score(reference, sent11)}")
+print(f"S-score: {sent11, RTN_score(reference, sent11)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent16, s_score(reference, sent16)}")
+print(f"S-score: {sent16, RTN_score(reference, sent16)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent12, s_score(reference, sent12)}")
+print(f"S-score: {sent12, RTN_score(reference, sent12)}")
 print("--- %s seconds ---" % (time.time() - start_time))
-print(f"S-score: {sent17, s_score(reference, sent17)}")
-# print(f"S-score: {candidate, s_score(reference, candidate)}")
+print(f"S-score: {sent17, RTN_score(reference, sent17)}")
+# print(f"S-score: {candidate, RTN_score(reference, candidate)}")
 print("--- %s seconds ---" % (time.time() - start_time))
