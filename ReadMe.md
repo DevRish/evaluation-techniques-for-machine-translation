@@ -7,7 +7,7 @@ This study aims to advance machine translation evaluation by meticulously analyz
 ## Review of pre-existing works
 Previous studies have extensively explored the efficacy and limitations of machine translation evaluation metrics such as BLEU, METEOR, and BLEURT.
 ## RTN-Method
-The RTN-Method or Recursive Tree-based N-gram method, recursively calculates the weighted precision and recall scores from lower-grams to the higher-grams in a bottom-up approach. It also implements lemmatization for fairer evaluation. Check out the RTN code her: https://github.com/Subhodeep01/RTN.git
+The RTN-Method or Recursive Tree-based N-gram method, recursively calculates the weighted precision and recall scores from lower-grams to the higher-grams in a bottom-up approach. It also implements lemmatization for fairer evaluation. Check out the RTN code here: https://github.com/Subhodeep01/RTN.git
 ## SAA-Method
 The SAA Model or Semantic Assignment and Alignment Model solves the classic assignment problem between the words from the reference sentence and the candidate sentence and finds an optimal pairing of words such that the difference in their meanings is minimized, while also minimizing the positional differences and information disparity.
 ## References
